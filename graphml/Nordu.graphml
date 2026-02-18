@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="key" attr.type="int" for="edge" id="d26" />
+  <key attr.name="label" attr.type="string" for="node" id="d25" />
+  <key attr.name="id" attr.type="int" for="node" id="d24" />
+  <key attr.name="Internal" attr.type="int" for="node" id="d23" />
+  <key attr.name="SvnVersion" attr.type="int" for="graph" id="d22" />
+  <key attr.name="Testbed" attr.type="int" for="graph" id="d21" />
+  <key attr.name="NetworkDate" attr.type="string" for="graph" id="d20" />
+  <key attr.name="Transit" attr.type="int" for="graph" id="d19" />
+  <key attr.name="Developed" attr.type="string" for="graph" id="d18" />
+  <key attr.name="Creator" attr.type="string" for="graph" id="d17" />
+  <key attr.name="Classification" attr.type="string" for="graph" id="d16" />
+  <key attr.name="Layer" attr.type="string" for="graph" id="d15" />
+  <key attr.name="Access" attr.type="int" for="graph" id="d14" />
+  <key attr.name="LastAccess" attr.type="string" for="graph" id="d13" />
+  <key attr.name="Customer" attr.type="int" for="graph" id="d12" />
+  <key attr.name="label" attr.type="string" for="graph" id="d11" />
+  <key attr.name="Commercial" attr.type="int" for="graph" id="d10" />
+  <key attr.name="Backbone" attr.type="int" for="graph" id="d9" />
+  <key attr.name="Type" attr.type="string" for="graph" id="d8" />
+  <key attr.name="Version" attr.type="string" for="graph" id="d7" />
+  <key attr.name="Source" attr.type="string" for="graph" id="d6" />
+  <key attr.name="Note" attr.type="string" for="graph" id="d5" />
+  <key attr.name="Provenance" attr.type="string" for="graph" id="d4" />
+  <key attr.name="Network" attr.type="string" for="graph" id="d3" />
+  <key attr.name="GeoExtent" attr.type="string" for="graph" id="d2" />
+  <key attr.name="GeoLocation" attr.type="string" for="graph" id="d1" />
+  <key attr.name="DateObtained" attr.type="string" for="graph" id="d0" />
+  <graph edgedefault="undirected" id="">
+    <data key="d0">22/10/10</data>
+    <data key="d1">Europe</data>
+    <data key="d2">Continent</data>
+    <data key="d3">NORDU</data>
+    <data key="d4">Primary</data>
+    <data key="d5">CERT + NEWS + DNS</data>
+    <data key="d6">http://stats.nordu.net/stat-q/load-map/ndn-map,,traffic,peak</data>
+    <data key="d7">1.0</data>
+    <data key="d8">REN</data>
+    <data key="d9">1</data>
+    <data key="d10">0</data>
+    <data key="d11">NORDU</data>
+    <data key="d12">0</data>
+    <data key="d13">21/10/10</data>
+    <data key="d14">0</data>
+    <data key="d15">IP</data>
+    <data key="d16">Backbone Customer? Transit?</data>
+    <data key="d17">Topology Zoo Toolset</data>
+    <data key="d18">developed</data>
+    <data key="d19">0</data>
+    <data key="d20">D</data>
+    <data key="d21">0</data>
+    <data key="d22">8123</data>
+    <node id="0">
+      <data key="d23">1</data>
+      <data key="d24">0</data>
+      <data key="d25">RHnet</data>
+    </node>
+    <node id="1">
+      <data key="d23">1</data>
+      <data key="d24">1</data>
+      <data key="d25">REY</data>
+    </node>
+    <node id="2">
+      <data key="d23">1</data>
+      <data key="d24">2</data>
+      <data key="d25">HEX</data>
+    </node>
+    <node id="3">
+      <data key="d23">0</data>
+      <data key="d24">3</data>
+      <data key="d25">RIX</data>
+    </node>
+    <node id="4">
+      <data key="d23">1</data>
+      <data key="d24">4</data>
+      <data key="d25">MAN</data>
+    </node>
+    <node id="5">
+      <data key="d23">0</data>
+      <data key="d24">5</data>
+      <data key="d25">NYIIX</data>
+    </node>
+    <node id="6">
+      <data key="d23">0</data>
+      <data key="d24">6</data>
+      <data key="d25">MANLAN</data>
+    </node>
+    <node id="7">
+      <data key="d23">1</data>
+      <data key="d24">7</data>
+      <data key="d25">SAR</data>
+    </node>
+    <node id="8">
+      <data key="d23">1</data>
+      <data key="d24">8</data>
+      <data key="d25">UNI</data>
+    </node>
+    <node id="9">
+      <data key="d23">0</data>
+      <data key="d24">9</data>
+      <data key="d25">GEANT</data>
+    </node>
+    <node id="10">
+      <data key="d23">0</data>
+      <data key="d24">10</data>
+      <data key="d25">SURFNET</data>
+    </node>
+    <node id="11">
+      <data key="d23">0</data>
+      <data key="d24">11</data>
+      <data key="d25">KAUST</data>
+    </node>
+    <node id="12">
+      <data key="d23">0</data>
+      <data key="d24">12</data>
+      <data key="d25">AMSIX</data>
+    </node>
+    <node id="13">
+      <data key="d23">1</data>
+      <data key="d24">13</data>
+      <data key="d25">FSKNet</data>
+    </node>
+    <node id="14">
+      <data key="d23">1</data>
+      <data key="d24">14</data>
+      <data key="d25">ORE</data>
+    </node>
+    <node id="15">
+      <data key="d23">1</data>
+      <data key="d24">15</data>
+      <data key="d25">NDGF</data>
+    </node>
+    <node id="16">
+      <data key="d23">1</data>
+      <data key="d24">16</data>
+      <data key="d25">FUNET</data>
+    </node>
+    <node id="17">
+      <data key="d23">1</data>
+      <data key="d24">17</data>
+      <data key="d25">FRE</data>
+    </node>
+    <node id="18">
+      <data key="d23">1</data>
+      <data key="d24">18</data>
+      <data key="d25">TUG</data>
+    </node>
+    <node id="19">
+      <data key="d23">1</data>
+      <data key="d24">19</data>
+      <data key="d25">UNINETT</data>
+    </node>
+    <node id="20">
+      <data key="d23">1</data>
+      <data key="d24">20</data>
+      <data key="d25">SUNET</data>
+    </node>
+    <node id="21">
+      <data key="d23">0</data>
+      <data key="d24">21</data>
+      <data key="d25">TInet</data>
+    </node>
+    <node id="22">
+      <data key="d23">0</data>
+      <data key="d24">22</data>
+      <data key="d25">DIX</data>
+    </node>
+    <node id="23">
+      <data key="d23">0</data>
+      <data key="d24">23</data>
+      <data key="d25">RBNET</data>
+    </node>
+    <node id="24">
+      <data key="d23">0</data>
+      <data key="d24">24</data>
+      <data key="d25">RUNNET</data>
+    </node>
+    <node id="25">
+      <data key="d23">0</data>
+      <data key="d24">25</data>
+      <data key="d25">Netnod-8</data>
+    </node>
+    <node id="26">
+      <data key="d23">0</data>
+      <data key="d24">26</data>
+      <data key="d25">TeliaSonera</data>
+    </node>
+    <node id="27">
+      <data key="d23">0</data>
+      <data key="d24">27</data>
+      <data key="d25">TeliaSonera</data>
+    </node>
+    <node id="28">
+      <data key="d23">0</data>
+      <data key="d24">28</data>
+      <data key="d25">Google</data>
+    </node>
+    <node id="29">
+      <data key="d23">0</data>
+      <data key="d24">29</data>
+      <data key="d25">Netnod-A</data>
+    </node>
+    <node id="30">
+      <data key="d23">0</data>
+      <data key="d24">30</data>
+      <data key="d25">Telia -SE</data>
+    </node>
+    <node id="31">
+      <data key="d23">0</data>
+      <data key="d24">31</data>
+      <data key="d25">Verizon-EU</data>
+    </node>
+    <node id="32">
+      <data key="d23">0</data>
+      <data key="d24">32</data>
+      <data key="d25">NIX</data>
+    </node>
+    <edge source="0" target="1">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="0" target="1">
+      <data key="d26">1</data>
+    </edge>
+    <edge source="0" target="1">
+      <data key="d26">2</data>
+    </edge>
+    <edge source="1" target="8">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="1" target="2">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="1" target="3">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="1" target="4">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="2" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="2" target="7">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="4" target="6">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="4" target="5">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="4" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="7" target="8">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="7" target="11">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="7" target="12">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="7" target="10">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="9">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="13">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="18">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="21">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="8" target="22">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="9" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="13" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="14" target="15">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="14" target="17">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="14" target="18">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="16" target="17">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="16" target="18">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="17" target="18">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="17" target="20">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="17" target="25">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="17" target="26">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="32">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="20">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="20">
+      <data key="d26">1</data>
+    </edge>
+    <edge source="18" target="23">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="24">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="27">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="28">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="29">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="30">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="31">
+      <data key="d26">0</data>
+    </edge>
+  </graph>
+</graphml>

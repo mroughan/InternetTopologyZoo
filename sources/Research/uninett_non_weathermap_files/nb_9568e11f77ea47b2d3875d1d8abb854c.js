@@ -1,0 +1,1 @@
+Drupal.locale = { 'strings': { "E-mail": "E-post", "Created": "Skrevet", "Select all rows in this table": "Velg alle rader i denne tabellen", "Deselect all rows in this table": "Ikke velg noen rader i denne tabellen", "Country": "Land", "Customer": "Kunde", "Phone": "Telefon" } };

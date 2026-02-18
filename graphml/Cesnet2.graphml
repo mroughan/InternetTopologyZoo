@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="key" attr.type="int" for="edge" id="d26" />
+  <key attr.name="geocode_name" attr.type="string" for="node" id="d25" />
+  <key attr.name="label" attr.type="string" for="node" id="d24" />
+  <key attr.name="id" attr.type="int" for="node" id="d23" />
+  <key attr.name="Internal" attr.type="int" for="node" id="d22" />
+  <key attr.name="SvnVersion" attr.type="int" for="graph" id="d21" />
+  <key attr.name="Testbed" attr.type="int" for="graph" id="d20" />
+  <key attr.name="NetworkDate" attr.type="string" for="graph" id="d19" />
+  <key attr.name="Transit" attr.type="int" for="graph" id="d18" />
+  <key attr.name="Developed" attr.type="string" for="graph" id="d17" />
+  <key attr.name="Creator" attr.type="string" for="graph" id="d16" />
+  <key attr.name="Classification" attr.type="string" for="graph" id="d15" />
+  <key attr.name="Layer" attr.type="string" for="graph" id="d14" />
+  <key attr.name="Access" attr.type="int" for="graph" id="d13" />
+  <key attr.name="LastAccess" attr.type="string" for="graph" id="d12" />
+  <key attr.name="Customer" attr.type="int" for="graph" id="d11" />
+  <key attr.name="label" attr.type="string" for="graph" id="d10" />
+  <key attr.name="Commercial" attr.type="int" for="graph" id="d9" />
+  <key attr.name="Backbone" attr.type="int" for="graph" id="d8" />
+  <key attr.name="Type" attr.type="string" for="graph" id="d7" />
+  <key attr.name="Version" attr.type="string" for="graph" id="d6" />
+  <key attr.name="Source" attr.type="string" for="graph" id="d5" />
+  <key attr.name="Note" attr.type="string" for="graph" id="d4" />
+  <key attr.name="Network" attr.type="string" for="graph" id="d3" />
+  <key attr.name="GeoExtent" attr.type="string" for="graph" id="d2" />
+  <key attr.name="GeoLocation" attr.type="string" for="graph" id="d1" />
+  <key attr.name="DateObtained" attr.type="string" for="graph" id="d0" />
+  <graph edgedefault="undirected" id="">
+    <data key="d0">11/10/10</data>
+    <data key="d1">Czech Republic</data>
+    <data key="d2">Country</data>
+    <data key="d3">CESNET</data>
+    <data key="d4">Utilization info is not included in the graphml (no customer services?)</data>
+    <data key="d5">http://www.ces.net/netreport/</data>
+    <data key="d6">1.0</data>
+    <data key="d7">REN</data>
+    <data key="d8">1</data>
+    <data key="d9">0</data>
+    <data key="d10">CESNET2</data>
+    <data key="d11">0</data>
+    <data key="d12">10/10/10</data>
+    <data key="d13">0</data>
+    <data key="d14">IP</data>
+    <data key="d15">Testbed Backbone Transit</data>
+    <data key="d16">Topology Zoo Toolset</data>
+    <data key="d17">developed</data>
+    <data key="d18">1</data>
+    <data key="d19">D</data>
+    <data key="d20">1</data>
+    <data key="d21">8108</data>
+    <node id="0">
+      <data key="d22">1</data>
+      <data key="d23">0</data>
+      <data key="d24">Cheb</data>
+    </node>
+    <node id="1">
+      <data key="d22">1</data>
+      <data key="d23">1</data>
+      <data key="d24">Plzen</data>
+    </node>
+    <node id="2">
+      <data key="d22">1</data>
+      <data key="d23">2</data>
+      <data key="d24">Most</data>
+    </node>
+    <node id="3">
+      <data key="d22">1</data>
+      <data key="d23">3</data>
+      <data key="d24">Decin</data>
+    </node>
+    <node id="4">
+      <data key="d22">1</data>
+      <data key="d23">4</data>
+      <data key="d24">Usti nad Labem</data>
+    </node>
+    <node id="5">
+      <data key="d22">1</data>
+      <data key="d23">5</data>
+      <data key="d24">Praha</data>
+    </node>
+    <node id="6">
+      <data key="d22">1</data>
+      <data key="d23">6</data>
+      <data key="d24">Liberec</data>
+    </node>
+    <node id="7">
+      <data key="d22">1</data>
+      <data key="d23">7</data>
+      <data key="d24">Podebrady</data>
+    </node>
+    <node id="8">
+      <data key="d22">1</data>
+      <data key="d23">8</data>
+      <data key="d24">Tabor</data>
+    </node>
+    <node id="9">
+      <data key="d22">1</data>
+      <data key="d23">9</data>
+      <data key="d24">Ceske Budejovice</data>
+    </node>
+    <node id="10">
+      <data key="d22">0</data>
+      <data key="d23">10</data>
+      <data key="d24">AMS-IX</data>
+    </node>
+    <node id="11">
+      <data key="d22">0</data>
+      <data key="d23">11</data>
+      <data key="d24">NIX.cz</data>
+    </node>
+    <node id="12">
+      <data key="d22">0</data>
+      <data key="d23">12</data>
+      <data key="d24">Public Internet</data>
+    </node>
+    <node id="13">
+      <data key="d22">1</data>
+      <data key="d23">13</data>
+      <data key="d24">Jindrichuv Hradec</data>
+    </node>
+    <node id="14">
+      <data key="d22">1</data>
+      <data key="d23">14</data>
+      <data key="d24">Jihlava</data>
+    </node>
+    <node id="15">
+      <data key="d22">1</data>
+      <data key="d23">15</data>
+      <data key="d24">Pardubice</data>
+    </node>
+    <node id="16">
+      <data key="d22">1</data>
+      <data key="d23">16</data>
+      <data key="d24">Hradec Kralove</data>
+    </node>
+    <node id="17">
+      <data key="d22">1</data>
+      <data key="d23">17</data>
+      <data key="d24">Ceska Trebova</data>
+    </node>
+    <node id="18">
+      <data key="d22">1</data>
+      <data key="d23">18</data>
+      <data key="d24">Olomouc</data>
+    </node>
+    <node id="19">
+      <data key="d22">1</data>
+      <data key="d23">19</data>
+      <data key="d24">Brno</data>
+    </node>
+    <node id="20">
+      <data key="d22">1</data>
+      <data key="d23">20</data>
+      <data key="d24">Vyskov</data>
+    </node>
+    <node id="21">
+      <data key="d22">1</data>
+      <data key="d23">21</data>
+      <data key="d24">Zlin</data>
+    </node>
+    <node id="22">
+      <data key="d25">Breclav</data>
+      <data key="d22">1</data>
+      <data key="d23">22</data>
+      <data key="d24">Breclav,Lednice</data>
+    </node>
+    <node id="23">
+      <data key="d22">0</data>
+      <data key="d23">23</data>
+      <data key="d24">ACONET</data>
+    </node>
+    <node id="24">
+      <data key="d22">0</data>
+      <data key="d23">24</data>
+      <data key="d24">SANET</data>
+    </node>
+    <node id="25">
+      <data key="d22">1</data>
+      <data key="d23">25</data>
+      <data key="d24">Ostrava</data>
+    </node>
+    <node id="26">
+      <data key="d22">1</data>
+      <data key="d23">26</data>
+      <data key="d24">Karvina</data>
+    </node>
+    <node id="27">
+      <data key="d22">1</data>
+      <data key="d23">27</data>
+      <data key="d24">Opava</data>
+    </node>
+    <node id="28">
+      <data key="d22">0</data>
+      <data key="d23">28</data>
+      <data key="d24">Pionier</data>
+    </node>
+    <node id="29">
+      <data key="d22">0</data>
+      <data key="d23">29</data>
+      <data key="d24">GEANT2</data>
+    </node>
+    <edge source="0" target="1">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="0" target="2">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="1" target="9">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="1" target="5">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="2" target="3">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="2" target="4">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="3" target="4">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="4" target="5">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="4" target="6">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="6">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="7">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="9">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="10">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="11">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="12">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="15">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="16">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="5" target="29">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="6" target="16">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="9" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="9" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="9" target="13">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="13" target="14">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="14" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="15" target="16">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="16" target="17">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="16" target="18">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="16" target="27">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="25">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="19">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="18" target="21">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="20">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="21">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="22">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="23">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="24">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="19" target="25">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="25" target="27">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="25" target="28">
+      <data key="d26">0</data>
+    </edge>
+    <edge source="25" target="26">
+      <data key="d26">0</data>
+    </edge>
+  </graph>
+</graphml>

@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="utf-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="key" attr.type="integer" for="edge" id="d36" />
+  <key attr.name="LinkSpeedRaw" attr.type="double" for="edge" id="d35" />
+  <key attr.name="LinkSpeedUnits" attr.type="string" for="edge" id="d34" />
+  <key attr.name="LinkLabel" attr.type="string" for="edge" id="d33" />
+  <key attr.name="LinkNote" attr.type="string" for="edge" id="d32" />
+  <key attr.name="LinkSpeed" attr.type="string" for="edge" id="d31" />
+  <key attr.name="label" attr.type="string" for="node" id="d30" />
+  <key attr.name="Longitude" attr.type="double" for="node" id="d29" />
+  <key attr.name="id" attr.type="integer" for="node" id="d28" />
+  <key attr.name="type" attr.type="string" for="node" id="d27" />
+  <key attr.name="Country" attr.type="string" for="node" id="d26" />
+  <key attr.name="Latitude" attr.type="double" for="node" id="d25" />
+  <key attr.name="Internal" attr.type="integer" for="node" id="d24" />
+  <key attr.name="SvnVersion" attr.type="integer" for="graph" id="d23" />
+  <key attr.name="Testbed" attr.type="integer" for="graph" id="d22" />
+  <key attr.name="NetworkDate" attr.type="string" for="graph" id="d21" />
+  <key attr.name="Transit" attr.type="integer" for="graph" id="d20" />
+  <key attr.name="Developed" attr.type="integer" for="graph" id="d19" />
+  <key attr.name="Creator" attr.type="string" for="graph" id="d18" />
+  <key attr.name="Classification" attr.type="string" for="graph" id="d17" />
+  <key attr.name="Layer" attr.type="string" for="graph" id="d16" />
+  <key attr.name="LastAccess" attr.type="string" for="graph" id="d15" />
+  <key attr.name="IX" attr.type="integer" for="graph" id="d14" />
+  <key attr.name="Customer" attr.type="integer" for="graph" id="d13" />
+  <key attr.name="label" attr.type="string" for="graph" id="d12" />
+  <key attr.name="Commercial" attr.type="integer" for="graph" id="d11" />
+  <key attr.name="Backbone" attr.type="integer" for="graph" id="d10" />
+  <key attr.name="DateType" attr.type="string" for="graph" id="d9" />
+  <key attr.name="Type" attr.type="string" for="graph" id="d8" />
+  <key attr.name="Version" attr.type="string" for="graph" id="d7" />
+  <key attr.name="Source" attr.type="string" for="graph" id="d6" />
+  <key attr.name="Access" attr.type="integer" for="graph" id="d5" />
+  <key attr.name="Provenance" attr.type="string" for="graph" id="d4" />
+  <key attr.name="Network" attr.type="string" for="graph" id="d3" />
+  <key attr.name="GeoExtent" attr.type="string" for="graph" id="d2" />
+  <key attr.name="GeoLocation" attr.type="string" for="graph" id="d1" />
+  <key attr.name="DateObtained" attr.type="string" for="graph" id="d0" />
+  <graph edgedefault="undirected">
+    <data key="d0">12/03/11</data>
+    <data key="d1">Norway</data>
+    <data key="d2">Country</data>
+    <data key="d3">Uninett</data>
+    <data key="d4">Primary</data>
+    <data key="d5">0</data>
+    <data key="d6">http://www.uninett.no/sites/drupal.uninett.no.uninett/files/fnett2b.png</data>
+    <data key="d7">1.0</data>
+    <data key="d8">REN</data>
+    <data key="d9">Historic</data>
+    <data key="d10">1</data>
+    <data key="d11">0</data>
+    <data key="d12">UNINETT</data>
+    <data key="d13">0</data>
+    <data key="d14">0</data>
+    <data key="d15">12/03/11</data>
+    <data key="d16">IP</data>
+    <data key="d17">Backbone</data>
+    <data key="d18">Topology Zoo Toolset</data>
+    <data key="d19">1</data>
+    <data key="d20">0</data>
+    <data key="d21">2009-2010</data>
+    <data key="d22">0</data>
+    <data key="d23">8123</data>
+    <node id="0">
+      <data key="d24">1</data>
+      <data key="d25">63.43049</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">0</data>
+      <data key="d29">10.39506</data>
+      <data key="d30">NTNU Hovedbygget</data>
+    </node>
+    <node id="1">
+      <data key="d24">1</data>
+      <data key="d25">63.43049</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">1</data>
+      <data key="d29">10.39506</data>
+      <data key="d30">NTNU Realfagbygget</data>
+    </node>
+    <node id="2">
+      <data key="d24">1</data>
+      <data key="d25">63.43049</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">2</data>
+      <data key="d29">10.39506</data>
+      <data key="d30">UNINETT Teknobyen</data>
+    </node>
+    <node id="3">
+      <data key="d24">1</data>
+      <data key="d25">62.27594</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">3</data>
+      <data key="d29">10.78241</data>
+      <data key="d30">HH Tynset</data>
+    </node>
+    <node id="4">
+      <data key="d24">1</data>
+      <data key="d25">64.86667</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">4</data>
+      <data key="d29">11.11667</data>
+      <data key="d30">HH Evenstad</data>
+    </node>
+    <node id="5">
+      <data key="d24">1</data>
+      <data key="d25">61.13484</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">5</data>
+      <data key="d29">11.36409</data>
+      <data key="d30">HH Rena</data>
+    </node>
+    <node id="6">
+      <data key="d24">1</data>
+      <data key="d25">60.88191</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">6</data>
+      <data key="d29">11.56231</data>
+      <data key="d30">HH Elverum</data>
+    </node>
+    <node id="7">
+      <data key="d24">1</data>
+      <data key="d25">60.19049</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">7</data>
+      <data key="d29">11.99772</data>
+      <data key="d30">HH Kongsvinger</data>
+    </node>
+    <node id="8">
+      <data key="d24">1</data>
+      <data key="d25">60.7945</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">8</data>
+      <data key="d29">11.06798</data>
+      <data key="d30">HH Hamar</data>
+    </node>
+    <node id="9">
+      <data key="d24">1</data>
+      <data key="d25">61.11514</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">9</data>
+      <data key="d29">10.46628</data>
+      <data key="d30">HiL Lillehammer</data>
+    </node>
+    <node id="10">
+      <data key="d24">1</data>
+      <data key="d25">60.79574</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">10</data>
+      <data key="d29">10.69155</data>
+      <data key="d30">HiG Gjovik</data>
+    </node>
+    <node id="11">
+      <data key="d24">1</data>
+      <data key="d25">59.91273</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">11</data>
+      <data key="d29">10.74609</data>
+      <data key="d30">UiO St Olavsplass 5</data>
+    </node>
+    <node id="12">
+      <data key="d24">1</data>
+      <data key="d25">59.91273</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">12</data>
+      <data key="d29">10.74609</data>
+      <data key="d30">UiO</data>
+    </node>
+    <node id="13">
+      <data key="d24">1</data>
+      <data key="d25">59.91273</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">13</data>
+      <data key="d29">10.74609</data>
+      <data key="d30">UiO</data>
+    </node>
+    <node id="14">
+      <data key="d24">1</data>
+      <data key="d25">59.98333</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">14</data>
+      <data key="d29">11.03333</data>
+      <data key="d30">UNIK Kjeller</data>
+    </node>
+    <node id="15">
+      <data key="d24">1</data>
+      <data key="d25">60.16804</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">15</data>
+      <data key="d29">10.25647</data>
+      <data key="d30">HiBu Honefoss</data>
+    </node>
+    <node id="16">
+      <data key="d24">1</data>
+      <data key="d25">60.16804</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">16</data>
+      <data key="d29">10.25647</data>
+      <data key="d30">Statenskartverkgeodesi</data>
+    </node>
+    <node id="17">
+      <data key="d24">1</data>
+      <data key="d25">59.66858</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">17</data>
+      <data key="d29">9.65017</data>
+      <data key="d30">HiBU Kongsberg</data>
+    </node>
+    <node id="18">
+      <data key="d24">1</data>
+      <data key="d25">59.74389</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">18</data>
+      <data key="d29">10.20449</data>
+      <data key="d30">HiBU Drammen</data>
+    </node>
+    <node id="19">
+      <data key="d24">1</data>
+      <data key="d25">59.41111</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">19</data>
+      <data key="d29">10.43</data>
+      <data key="d30">HVE Borre</data>
+    </node>
+    <node id="20">
+      <data key="d24">1</data>
+      <data key="d25">59.61667</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">20</data>
+      <data key="d29">10.35</data>
+      <data key="d30">HVE Eik</data>
+    </node>
+    <node id="21">
+      <data key="d24">1</data>
+      <data key="d25">59.05328</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">21</data>
+      <data key="d29">10.03517</data>
+      <data key="d30">HVE Larvik</data>
+    </node>
+    <node id="22">
+      <data key="d24">1</data>
+      <data key="d25">59.12478</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">22</data>
+      <data key="d29">11.38754</data>
+      <data key="d30">HRP Halden</data>
+    </node>
+    <node id="23">
+      <data key="d24">1</data>
+      <data key="d25">59.98333</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">23</data>
+      <data key="d29">11.03333</data>
+      <data key="d30">HiAK Kjeller</data>
+    </node>
+    <node id="24">
+      <data key="d24">1</data>
+      <data key="d25">59.2181</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">24</data>
+      <data key="d29">10.9298</data>
+      <data key="d30">HiO Fredrikstad</data>
+    </node>
+    <node id="25">
+      <data key="d24">1</data>
+      <data key="d25">63.96667</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">25</data>
+      <data key="d29">10.2</data>
+      <data key="d30">UMB As</data>
+    </node>
+    <node id="26">
+      <data key="d24">1</data>
+      <data key="d25">59.12478</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">26</data>
+      <data key="d29">11.38754</data>
+      <data key="d30">HiO Halden</data>
+    </node>
+    <node id="27">
+      <data key="d24">1</data>
+      <data key="d25">59.28391</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">27</data>
+      <data key="d29">11.10962</data>
+      <data key="d30">HiO Sarpsborg</data>
+    </node>
+    <node id="28">
+      <data key="d24">1</data>
+      <data key="d25">59.55936</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">28</data>
+      <data key="d29">9.25853</data>
+      <data key="d30">HiT Notodden</data>
+    </node>
+    <node id="29">
+      <data key="d24">1</data>
+      <data key="d25">59.43333</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">29</data>
+      <data key="d29">9.06667</data>
+      <data key="d30">HiT Bo</data>
+    </node>
+    <node id="30">
+      <data key="d24">1</data>
+      <data key="d25">59.14054</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">30</data>
+      <data key="d29">9.6561</data>
+      <data key="d30">HiT Porsgrunn</data>
+    </node>
+    <node id="31">
+      <data key="d24">1</data>
+      <data key="d25">58.46151</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">31</data>
+      <data key="d29">8.77253</data>
+      <data key="d30">UiA Arendal</data>
+    </node>
+    <node id="32">
+      <data key="d24">1</data>
+      <data key="d25">59.73333</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">32</data>
+      <data key="d29">8.0</data>
+      <data key="d30">Hit Rauland</data>
+    </node>
+    <node id="33">
+      <data key="d24">1</data>
+      <data key="d25">58.3405</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">33</data>
+      <data key="d29">8.59343</data>
+      <data key="d30">UiA Grimstad</data>
+    </node>
+    <node id="34">
+      <data key="d24">1</data>
+      <data key="d25">58.14671</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">34</data>
+      <data key="d29">7.9956</data>
+      <data key="d30">UiA Kristiansand</data>
+    </node>
+    <node id="35">
+      <data key="d24">1</data>
+      <data key="d25">58.97005</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">35</data>
+      <data key="d29">5.73332</data>
+      <data key="d30">UiS Stavanger</data>
+    </node>
+    <node id="36">
+      <data key="d24">1</data>
+      <data key="d25">58.85244</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">36</data>
+      <data key="d29">5.73521</data>
+      <data key="d30">VetHS Sandnes</data>
+    </node>
+    <node id="37">
+      <data key="d24">1</data>
+      <data key="d25">59.41378</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">37</data>
+      <data key="d29">5.268</data>
+      <data key="d30">HSH Haugesund</data>
+    </node>
+    <node id="38">
+      <data key="d24">1</data>
+      <data key="d25">59.75</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">38</data>
+      <data key="d29">5.48333</data>
+      <data key="d30">HSH Stord</data>
+    </node>
+    <node id="39">
+      <data key="d24">1</data>
+      <data key="d25">60.39299</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">39</data>
+      <data key="d29">5.32415</data>
+      <data key="d30">UiB Hoyteklogibygget</data>
+    </node>
+    <node id="40">
+      <data key="d24">1</data>
+      <data key="d25">60.39299</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">40</data>
+      <data key="d29">5.32415</data>
+      <data key="d30">UiB BT</data>
+    </node>
+    <node id="41">
+      <data key="d24">1</data>
+      <data key="d25">61.22829</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">41</data>
+      <data key="d29">7.10026</data>
+      <data key="d30">HSF Songdal</data>
+    </node>
+    <node id="42">
+      <data key="d24">1</data>
+      <data key="d25">61.45217</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">42</data>
+      <data key="d29">5.85717</data>
+      <data key="d30">HSF Forde</data>
+    </node>
+    <node id="43">
+      <data key="d24">1</data>
+      <data key="d25">62.47225</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">43</data>
+      <data key="d29">6.15492</data>
+      <data key="d30">HiA Alesund</data>
+    </node>
+    <node id="44">
+      <data key="d24">1</data>
+      <data key="d25">62.14762</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">44</data>
+      <data key="d29">6.07408</data>
+      <data key="d30">HVO Volda</data>
+    </node>
+    <node id="45">
+      <data key="d24">1</data>
+      <data key="d25">62.73752</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">45</data>
+      <data key="d29">7.15912</data>
+      <data key="d30">HSM Molde</data>
+    </node>
+    <node id="46">
+      <data key="d24">1</data>
+      <data key="d25">61.77277</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">46</data>
+      <data key="d29">6.21496</data>
+      <data key="d30">HSF Sandane</data>
+    </node>
+    <node id="47">
+      <data key="d24">1</data>
+      <data key="d25">63.11045</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">47</data>
+      <data key="d29">7.72795</data>
+      <data key="d30">HSM Kristiansun</data>
+    </node>
+    <node id="48">
+      <data key="d24">1</data>
+      <data key="d25">70.9221</data>
+      <data key="d26">Svalbard and Jan Mayen</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">48</data>
+      <data key="d29">-8.7187</data>
+      <data key="d30">UNIS Svalbard</data>
+    </node>
+    <node id="49">
+      <data key="d24">1</data>
+      <data key="d25">69.6489</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">49</data>
+      <data key="d29">18.95508</data>
+      <data key="d30">UiTo</data>
+    </node>
+    <node id="50">
+      <data key="d24">1</data>
+      <data key="d25">70.66336</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">50</data>
+      <data key="d29">23.68209</data>
+      <data key="d30">HiF Hammerfest</data>
+    </node>
+    <node id="51">
+      <data key="d24">1</data>
+      <data key="d25">69.96887</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">51</data>
+      <data key="d29">23.27165</data>
+      <data key="d30">HiF Alta</data>
+    </node>
+    <node id="52">
+      <data key="d24">1</data>
+      <data key="d25">70.07436</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">52</data>
+      <data key="d29">29.74872</data>
+      <data key="d30">HiF Vadso</data>
+    </node>
+    <node id="53">
+      <data key="d24">1</data>
+      <data key="d25">69.72706</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">53</data>
+      <data key="d29">30.04578</data>
+      <data key="d30">HiF Kirkenes</data>
+    </node>
+    <node id="54">
+      <data key="d24">1</data>
+      <data key="d25">69.01247</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">54</data>
+      <data key="d29">23.04116</data>
+      <data key="d30">SA/SH Kautokeino</data>
+    </node>
+    <node id="55">
+      <data key="d24">1</data>
+      <data key="d25">69.47187</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">55</data>
+      <data key="d29">25.51122</data>
+      <data key="d30">UiTo Karasjok</data>
+    </node>
+    <node id="56">
+      <data key="d24">1</data>
+      <data key="d25">69.6489</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">56</data>
+      <data key="d29">18.95508</data>
+      <data key="d30">UiTo</data>
+    </node>
+    <node id="57">
+      <data key="d24">1</data>
+      <data key="d25">68.43838</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">57</data>
+      <data key="d29">17.4272</data>
+      <data key="d30">HiN Narvik</data>
+    </node>
+    <node id="58">
+      <data key="d24">1</data>
+      <data key="d25">68.79833</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">58</data>
+      <data key="d29">16.54165</data>
+      <data key="d30">HiH Harstad</data>
+    </node>
+    <node id="59">
+      <data key="d24">1</data>
+      <data key="d25">69.12806</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">59</data>
+      <data key="d29">15.8575</data>
+      <data key="d30">NRS Andoya</data>
+    </node>
+    <node id="60">
+      <data key="d24">1</data>
+      <data key="d25">67.28</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">60</data>
+      <data key="d29">14.40501</data>
+      <data key="d30">HBO Bodo</data>
+    </node>
+    <node id="61">
+      <data key="d24">1</data>
+      <data key="d25">66.31278</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">61</data>
+      <data key="d29">14.14278</data>
+      <data key="d30">HBO Mo i Rana</data>
+    </node>
+    <node id="62">
+      <data key="d24">1</data>
+      <data key="d25">66.31278</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Large Circle</data>
+      <data key="d28">62</data>
+      <data key="d29">14.14278</data>
+      <data key="d30">NB Mo i Rana</data>
+    </node>
+    <node id="63">
+      <data key="d24">1</data>
+      <data key="d25">66.19672</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">63</data>
+      <data key="d29">13.02133</data>
+      <data key="d30">HiNe Nesna</data>
+    </node>
+    <node id="64">
+      <data key="d24">1</data>
+      <data key="d25">66.02166</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">64</data>
+      <data key="d29">12.63158</data>
+      <data key="d30">HiNe Sandnesjoen</data>
+    </node>
+    <node id="65">
+      <data key="d24">1</data>
+      <data key="d25">64.01487</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">65</data>
+      <data key="d29">11.49537</data>
+      <data key="d30">HiNT Steinkjer</data>
+    </node>
+    <node id="66">
+      <data key="d24">1</data>
+      <data key="d25">66.31278</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">66</data>
+      <data key="d29">14.14278</data>
+      <data key="d30">HiNe Mo i Rana</data>
+    </node>
+    <node id="67">
+      <data key="d24">1</data>
+      <data key="d25">64.46624</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">67</data>
+      <data key="d29">11.49572</data>
+      <data key="d30">HiNT Namsos</data>
+    </node>
+    <node id="68">
+      <data key="d24">1</data>
+      <data key="d25">63.6</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">68</data>
+      <data key="d29">10.96667</data>
+      <data key="d30">HiNT Levanger</data>
+    </node>
+    <node id="69">
+      <data key="d24">1</data>
+      <data key="d25">63.41667</data>
+      <data key="d26">Norway</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">69</data>
+      <data key="d29">10.95</data>
+      <data key="d30">Hing Stjordal</data>
+    </node>
+    <node id="70">
+      <data key="d24">1</data>
+      <data key="d25">70.9221</data>
+      <data key="d26">Svalbard and Jan Mayen</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">70</data>
+      <data key="d29">-8.7187</data>
+      <data key="d30">Eiscat</data>
+    </node>
+    <node id="71">
+      <data key="d24">1</data>
+      <data key="d25">70.9221</data>
+      <data key="d26">Svalbard and Jan Mayen</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">71</data>
+      <data key="d29">-8.7187</data>
+      <data key="d30">Longyearbyen Skole</data>
+    </node>
+    <node id="72">
+      <data key="d24">1</data>
+      <data key="d25">70.9221</data>
+      <data key="d26">Svalbard and Jan Mayen</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">72</data>
+      <data key="d29">-8.7187</data>
+      <data key="d30">NPolar Svalbard</data>
+    </node>
+    <node id="73">
+      <data key="d24">1</data>
+      <data key="d25">70.9221</data>
+      <data key="d26">Svalbard and Jan Mayen</data>
+      <data key="d27">Small Circle</data>
+      <data key="d28">73</data>
+      <data key="d29">-8.7187</data>
+      <data key="d30">NyAlesund</data>
+    </node>
+    <edge source="0" target="64">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="1">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="2">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="11">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="65">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="39">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="43">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="0" target="49">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="1" target="2">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="1" target="69">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="1" target="13">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="1" target="56">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="1" target="62">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="2" target="3">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="3" target="4">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="4" target="5">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="5" target="6">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="6" target="8">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="6" target="7">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="7" target="12">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="8" target="9">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="9" target="10">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="10" target="11">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="11" target="34">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="11" target="40">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="11" target="12">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="11" target="13">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="11" target="18">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="12" target="40">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="12" target="13">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="12" target="25">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="12" target="29">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="13" target="27">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="13" target="14">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="14" target="15">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="15" target="16">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="15" target="17">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="17" target="18">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="17" target="28">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="18" target="19">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="19" target="27">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="19" target="20">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="19" target="21">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="22" target="26">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="24" target="25">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="24" target="26">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="26" target="27">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="28" target="29">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="29" target="32">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="29" target="34">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="29" target="30">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="30" target="31">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="31" target="33">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="33" target="34">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="34" target="35">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="35" target="40">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="35" target="36">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="35" target="37">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="37" target="38">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="38" target="39">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="39" target="40">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="39" target="43">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="39" target="41">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="41" target="42">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="41" target="46">
+      <data key="d33">100-155 Mbit/s</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="42" target="44">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="43" target="44">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="48" target="72">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="48" target="73">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="48" target="58">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="48" target="70">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="48" target="71">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="49" target="56">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="49" target="50">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="49" target="57">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="50" target="51">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="50" target="52">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="51" target="56">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="51" target="54">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="52" target="53">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="53" target="55">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="54" target="55">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="56" target="58">
+      <data key="d31">10</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">10 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">10000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="57" target="58">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="57" target="60">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="58" target="59">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="58" target="60">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="60" target="62">
+      <data key="d31">2.5</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">2.5 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">2500000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="60" target="63">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="61" target="62">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="62" target="66">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="62" target="67">
+      <data key="d33">100-155 Mbit/s</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="62" target="63">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="63" target="64">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="65" target="67">
+      <data key="d33">100-155 Mbit/s</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="65" target="68">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+    <edge source="68" target="69">
+      <data key="d31">1</data>
+      <data key="d32"> it/s</data>
+      <data key="d33">1 Gbit/s</data>
+      <data key="d34">G</data>
+      <data key="d35">1000000000.0</data>
+      <data key="d36">0</data>
+    </edge>
+  </graph>
+</graphml>
