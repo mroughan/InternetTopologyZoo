@@ -39,14 +39,17 @@ Usage:
 Output lands in the same directory as this script.
 """
 from __future__ import annotations
-import os, sys, re, math, unicodedata
+import os, sys, re, math, unicodedata, urllib.request, zipfile, io
 from collections import Counter, defaultdict
+from dataclasses import dataclass
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
+
+import numpy as np
 
 
 # ---- config ---------------------------------------------------------
@@ -55,6 +58,150 @@ COPYRIGHT = "Copyright © 2026 Eric Parsonage"
 
 ZOO_DIR = Path.home() / "InternetTopologyZoo" / "graphml"
 OUT_DIR = Path(__file__).parent
+
+# Geonames cities500 dataset: ~350k populated places, every entry has a
+# population.  Used for two enrichment paths in the audit:
+#   * REVERSE: a node with lat/lon → its nearest cities500 record's
+#              country/name/population (no country attr needed).
+#   * FORWARD: a node lacking lat/lon but with a label and a country
+#              scope → the matching cities500 record by name within
+#              that country.
+# Cached under ~/.cache/glang/geonames/ so re-runs of the audit don't
+# re-download.
+GEONAMES_URL    = "https://download.geonames.org/export/dump/cities500.zip"
+GEONAMES_CACHE  = Path.home() / ".cache" / "glang" / "geonames"
+
+
+# ---- geonames index ------------------------------------------------
+
+@dataclass
+class GeoRecord:
+    geonameid: int
+    name: str
+    asciiname: str
+    lat: float
+    lon: float
+    country: str   # ISO-2 e.g. "AU"
+    population: int
+
+
+class GeonamesIndex:
+    """In-memory cities500 index supporting reverse (lat/lon → record)
+    and forward (country + name → record) lookup.  Numpy-backed so a
+    full 9.7k-node sweep finishes in seconds.
+    """
+
+    @classmethod
+    def load(cls):
+        path = GEONAMES_CACHE / "cities500.txt"
+        if not path.exists():
+            GEONAMES_CACHE.mkdir(parents=True, exist_ok=True)
+            print(f"  fetching {GEONAMES_URL} ...", flush=True)
+            with urllib.request.urlopen(GEONAMES_URL, timeout=60) as resp:
+                data = resp.read()
+            with zipfile.ZipFile(io.BytesIO(data)) as zf:
+                zf.extract("cities500.txt", path=GEONAMES_CACHE)
+        return cls(path)
+
+    def __init__(self, path: Path):
+        records: list[GeoRecord] = []
+        with path.open(encoding="utf-8") as f:
+            for line in f:
+                cols = line.rstrip("\n").split("\t")
+                if len(cols) < 19:
+                    continue
+                try:
+                    records.append(GeoRecord(
+                        geonameid=int(cols[0]),
+                        name=cols[1],
+                        asciiname=cols[2],
+                        lat=float(cols[4]),
+                        lon=float(cols[5]),
+                        country=cols[8],
+                        population=int(cols[14] or 0),
+                    ))
+                except (ValueError, IndexError):
+                    continue
+        self.records = records
+        # Numpy arrays for fast reverse-lookup vectorised haversine.
+        # Pre-radian conversion avoids per-query overhead.
+        self.lat_rad = np.array([math.radians(r.lat) for r in records])
+        self.lon_rad = np.array([math.radians(r.lon) for r in records])
+        # Forward index: country + lower-cased name (and asciiname) → record.
+        # If multiple cities share a name we keep the most-populous one.
+        self.by_country_name: dict[tuple[str, str], GeoRecord] = {}
+        for r in records:
+            for nm in {r.name.lower(), r.asciiname.lower()}:
+                if not nm:
+                    continue
+                key = (r.country, nm)
+                cur = self.by_country_name.get(key)
+                if cur is None or r.population > cur.population:
+                    self.by_country_name[key] = r
+
+    def reverse(self, lat: float, lon: float) -> GeoRecord:
+        """Nearest cities500 record by haversine distance."""
+        lat_r = math.radians(lat)
+        lon_r = math.radians(lon)
+        dlat = self.lat_rad - lat_r
+        dlon = self.lon_rad - lon_r
+        a = np.sin(dlat * 0.5) ** 2 + np.cos(self.lat_rad) * math.cos(lat_r) * np.sin(dlon * 0.5) ** 2
+        # Argmin of sqrt-haversine is argmin of haversine; skip sqrt.
+        i = int(np.argmin(a))
+        return self.records[i]
+
+    def forward(self, name: str, country: str) -> GeoRecord | None:
+        """Best name match within the given ISO-2 country, or None.
+        Tries the literal label first, then a unicode-stripped form."""
+        if not name or not country:
+            return None
+        cc = country.upper()
+        nm = name.strip().lower()
+        rec = self.by_country_name.get((cc, nm))
+        if rec is not None:
+            return rec
+        # Try unicode-NFD-stripped form (Müller → Muller).
+        ascii_nm = "".join(
+            c for c in unicodedata.normalize("NFD", nm)
+            if unicodedata.category(c) != "Mn"
+        )
+        return self.by_country_name.get((cc, ascii_nm))
+
+
+# Country-name → ISO-2 for graph-level GeoLocation values like
+# "Australia".  Topology Zoo uses a small set; we cover the ones that
+# appear in single-country-scoped graphs.  Unknown values just yield
+# None and the per-node Country attribute remains the only source.
+_COUNTRY_ISO2 = {
+    "argentina": "AR", "australia": "AU", "austria": "AT", "belgium": "BE",
+    "brazil": "BR", "bulgaria": "BG", "canada": "CA", "chile": "CL",
+    "china": "CN", "colombia": "CO", "croatia": "HR", "cyprus": "CY",
+    "czech republic": "CZ", "denmark": "DK", "egypt": "EG", "estonia": "EE",
+    "finland": "FI", "france": "FR", "georgia": "GE", "germany": "DE",
+    "ghana": "GH", "greece": "GR", "hong kong": "HK", "hungary": "HU",
+    "iceland": "IS", "india": "IN", "indonesia": "ID", "iran": "IR",
+    "ireland": "IE", "israel": "IL", "italy": "IT", "japan": "JP",
+    "kenya": "KE", "latvia": "LV", "lithuania": "LT", "luxembourg": "LU",
+    "macedonia": "MK", "malaysia": "MY", "malta": "MT", "mexico": "MX",
+    "moldova": "MD", "mongolia": "MN", "morocco": "MA", "netherlands": "NL",
+    "new zealand": "NZ", "nigeria": "NG", "norway": "NO", "pakistan": "PK",
+    "peru": "PE", "philippines": "PH", "poland": "PL", "portugal": "PT",
+    "romania": "RO", "russia": "RU", "saudi arabia": "SA", "serbia": "RS",
+    "singapore": "SG", "slovakia": "SK", "slovenia": "SI", "south africa": "ZA",
+    "south korea": "KR", "spain": "ES", "sri lanka": "LK", "sweden": "SE",
+    "switzerland": "CH", "taiwan": "TW", "thailand": "TH", "tunisia": "TN",
+    "turkey": "TR", "uganda": "UG", "ukraine": "UA", "uk": "GB",
+    "united kingdom": "GB", "united states": "US", "uruguay": "UY",
+    "usa": "US", "venezuela": "VE", "vietnam": "VN", "zambia": "ZM",
+}
+
+
+def country_to_iso2(name: str | None) -> str | None:
+    if not name:
+        return None
+    return _COUNTRY_ISO2.get(name.strip().lower())
+
+
 XLSX    = OUT_DIR / "zoo-audit.xlsx"
 REPORT  = OUT_DIR / "report.md"
 PDF     = OUT_DIR / "report.pdf"
@@ -167,12 +314,22 @@ def has_control_chars(s: str) -> bool:
 
 # ---- per-graph analysis --------------------------------------------
 
-def analyse(parsed: dict) -> dict:
-    """Return (per-graph summary, issues list, node rows, edge rows)."""
+def analyse(parsed: dict, geo: GeonamesIndex | None = None):
+    """Return (per-graph summary, issues list, missing-latlon list,
+    real-node enrichment list).
+    When `geo` is supplied, every real internal node gets a geonames
+    lookup attempt: reverse from lat/lon when present, otherwise
+    forward by name+country.  The matching record's country, place
+    name and population are attached to the per-node enrichment row.
+    """
     name  = parsed["name"]
     nodes = parsed["nodes"]
     edges = parsed["edges"]
     issues = []
+    enrichment_rows = []   # (graph, node_id, label, src_lat, src_lon,
+                           #  matched_country, matched_name, population, method)
+    real_resolved   = 0
+    real_total_pop  = 0
 
     # --- nodes ---
     node_ids = {n["id"] for n in nodes}
@@ -182,6 +339,43 @@ def analyse(parsed: dict) -> dict:
     label_empty = 0
     label_whitespace = 0
     label_control = 0
+
+    # Topology Zoo's graph-level country context lives in two attrs:
+    #   GeoExtent   — categorical: "Country", "Region", "Continent",
+    #                 "Global".  Only "Country" narrows the search to a
+    #                 single geonames-per-country file usefully.
+    #   GeoLocation — the actual place name (e.g. "Australia").
+    # If GeoExtent is "Country" with a non-empty GeoLocation we treat
+    # the graph as single-country-scoped; otherwise per-node Country
+    # attrs are required for geonames forward-lookup to resolve.
+    graph_data        = parsed.get("graph_data", {}) or {}
+    geo_extent        = (graph_data.get("GeoExtent") or "").strip()
+    geo_location      = (graph_data.get("GeoLocation") or "").strip()
+    graph_is_single_country = (
+        geo_extent == "Country"
+        and geo_location
+        and not is_missing(geo_location))
+
+    # Real-node accounting: glang's topology-zoo plugin classifies any
+    # node with Internal==0 as Rj45 (external/peering stub) and any
+    # node with hyperedge==1 as a switch.  Everything else is a "real"
+    # node that becomes a CORE router and ought to have geocoordinates
+    # for honest map placement.  We track real-node lat/lon gaps
+    # separately because a missing coordinate on an Rj45 stub is fine
+    # (geonames spring-places it from neighbouring anchors); a missing
+    # coordinate on a real router is more informative about the source
+    # data quality.
+    rj45_nodes              = 0
+    rj45_node_ids           = set()
+    switch_nodes            = 0
+    real_nodes              = 0
+    real_missing_latlon     = 0
+    real_missing_label      = 0
+    real_missing_country    = 0
+    # Per-node: had no lat/lon, AND would also have no name+country
+    # fallback for forward-lookup -- so geonames couldn't reach this
+    # node by either route.  Aggregated up at the end into the gate.
+    real_geonames_unreachable = 0
 
     for n in nodes:
         a = n["attrs"]
@@ -206,6 +400,7 @@ def analyse(parsed: dict) -> dict:
         lon = a.get("Longitude")
         fl_lat = coerce_float(lat)
         fl_lon = coerce_float(lon)
+        is_unlocated = fl_lat is None or fl_lon is None
 
         if fl_lat is None and fl_lon is None:
             missing_latlon.append((nid, label, "both"))
@@ -217,6 +412,84 @@ def analyse(parsed: dict) -> dict:
             missing_latlon.append((nid, label, "lon"))
             if lon is not None and not is_missing(lon):
                 bad_coords.append((nid, label, "Longitude", lon))
+
+        # Classify per glang's default topology-zoo shape rules.
+        internal_raw  = a.get("Internal")
+        hyperedge_raw = a.get("hyperedge")
+        country_raw   = a.get("Country")
+        if str(internal_raw) == "0":
+            rj45_nodes += 1
+            rj45_node_ids.add(nid)
+        elif str(hyperedge_raw) == "1":
+            switch_nodes += 1
+        else:
+            real_nodes += 1
+            if is_unlocated:
+                real_missing_latlon += 1
+                issues.append({"category": "real-node-missing-latlon", "severity": "warn",
+                               "detail": f"real node id={nid} ({label!r}) has no Latitude/Longitude"})
+            # Per-node geonames reachability:
+            #
+            # Geonames offers two lookup paths.  A node is reachable if
+            # at least one applies.
+            #
+            #   reverse: lat/lon → nearest populated place.  No country
+            #            needed (the coordinates disambiguate globally).
+            #
+            #   forward: place name → matching geonames record.  Needs
+            #            a country scope to point at the right per-country
+            #            data file -- either the node's own `Country`
+            #            attribute or a graph-level single-country
+            #            context (GeoExtent == "Country" + GeoLocation).
+            #
+            # A node is "unreachable" only when BOTH paths fail: it has
+            # no lat/lon AND has no name+country fallback.
+            label_ok = bool(label and label.strip()
+                            and not has_control_chars(label))
+            country_ok = (
+                graph_is_single_country
+                or (country_raw is not None and not is_missing(country_raw)))
+            if not label_ok:
+                real_missing_label += 1
+            if country_raw is None or is_missing(country_raw):
+                real_missing_country += 1
+            forward_ok = label_ok and country_ok
+            reverse_ok = not is_unlocated
+            if not (forward_ok or reverse_ok):
+                real_geonames_unreachable += 1
+
+            # Live geonames enrichment: reverse from lat/lon when
+            # present (no country needed), else forward from
+            # name+country.  The matching record's country/name/
+            # population is captured per node and aggregated.
+            if geo is not None:
+                rec = None
+                method = "unreachable"
+                if reverse_ok:
+                    rec = geo.reverse(fl_lat, fl_lon)
+                    method = "reverse"
+                elif forward_ok:
+                    cc = country_to_iso2(country_raw) \
+                        or (country_to_iso2(geo_location)
+                            if graph_is_single_country else None)
+                    if cc:
+                        rec = geo.forward(label, cc)
+                        if rec is not None:
+                            method = "forward"
+                        else:
+                            method = "forward-miss"
+                if rec is not None:
+                    real_resolved += 1
+                    real_total_pop += rec.population
+                    enrichment_rows.append((
+                        name, nid, label,
+                        fl_lat, fl_lon,
+                        rec.country, rec.name, rec.population, method))
+                else:
+                    enrichment_rows.append((
+                        name, nid, label,
+                        fl_lat, fl_lon,
+                        "", "", 0, method))
 
         if fl_lat is not None and not (-90.0 <= fl_lat <= 90.0):
             bad_coords.append((nid, label, "Latitude", lat))
@@ -241,6 +514,7 @@ def analyse(parsed: dict) -> dict:
     self_loops = 0
     dangling_src = 0
     dangling_dst = 0
+    external_edges = 0     # edges with at least one endpoint classified as Rj45
     for e in edges:
         s, t = e["source"], e["target"]
         if s not in node_ids:
@@ -255,6 +529,12 @@ def analyse(parsed: dict) -> dict:
             self_loops += 1
             issues.append({"category": "edge-self-loop", "severity": "warn",
                            "detail": f"edge id={e['id']} source=target={s}"})
+        # An edge is external (a connection to another network) when
+        # at least one endpoint was classified as Rj45 above.  This is
+        # the count of cross-domain peering / transit links the zoo
+        # operator drew into the diagram.
+        if s in rj45_node_ids or t in rj45_node_ids:
+            external_edges += 1
         unordered = tuple(sorted((s, t))) if s and t else (s, t)
         undirected_pair_counts[unordered] += 1
 
@@ -299,15 +579,50 @@ def analyse(parsed: dict) -> dict:
     declared_multi = parsed["edgedefault"] == "undirected" and False  # edgedefault alone isn't multi
     is_multi = parallel_edges > 0
 
+    # Could geonames potentially resolve every internal node and
+    # contribute population data?  Two gating conditions:
+    #
+    #   - Every real node has a non-empty label (geonames searches by
+    #     place-name string).
+    #   - Every real node is scoped to a country, either via a
+    #     per-node `Country` attribute or via a graph-level
+    #     `GeoExtent`/`Country` attribute that covers the whole
+    #     topology.
+    #
+    # If both conditions hold we count the topology as "geonames
+    # eligible".  Whether geonames actually finds each label in the
+    # corresponding country file is a separate, more expensive check
+    # (running the lookup against the live data files) -- this gate
+    # is the cheap upper bound.
+    # A graph is "geonames-eligible" when every real internal node is
+    # reachable by either of geonames' two lookup paths -- reverse
+    # (from lat/lon) or forward (from place name + country scope).
+    # The per-node check ran inside the loop above and tallied
+    # `real_geonames_unreachable`; the graph-level gate is just
+    # "no real nodes were unreachable".
+    geonames_eligible = (real_nodes > 0
+                         and real_geonames_unreachable == 0)
+
     summary = {
         "graph":                name,
         "nodes":                len(nodes),
+        "real_nodes":           real_nodes,
+        "rj45_nodes":           rj45_nodes,
+        "switch_nodes":         switch_nodes,
         "edges":                len(edges),
+        "external_edges":       external_edges,
         "edgedefault":          parsed["edgedefault"],
         "multigraph?":          "yes" if is_multi else "no",
         "parallel_edges":       parallel_edges,
         "self_loops":           self_loops,
-        "missing_lat_or_lon":   len(missing_latlon),
+        "missing_lat_or_lon":           len(missing_latlon),
+        "real_missing_lat_or_lon":      real_missing_latlon,
+        "real_missing_label":           real_missing_label,
+        "real_missing_country":         real_missing_country,
+        "real_geonames_unreachable":    real_geonames_unreachable,
+        "geonames_eligible":            "yes" if geonames_eligible else "no",
+        "real_nodes_resolved":          real_resolved,
+        "real_total_population":        real_total_pop,
         "bad_coords":           len(bad_coords),
         "isolated_nodes":       len(isolated_nodes),
         "components":           components,
@@ -318,7 +633,7 @@ def analyse(parsed: dict) -> dict:
         "dangling_endpoints":   dangling_src + dangling_dst,
         "issues":               len(issues),
     }
-    return summary, issues, missing_latlon
+    return summary, issues, missing_latlon, enrichment_rows
 
 
 # ---- xlsx output ----------------------------------------------------
@@ -456,7 +771,8 @@ def _stamp(ws, title):
     ws.cell(2, 1, COPYRIGHT).font = Font(italic=True, color="666666")
 
 
-def write_workbook(entries, all_missing, all_issues, global_summary):
+def write_workbook(entries, all_missing, all_issues, all_enrichment,
+                   global_summary):
     wb = Workbook()
     # Summary sheet
     ws = wb.active
@@ -464,8 +780,13 @@ def write_workbook(entries, all_missing, all_issues, global_summary):
     _stamp(ws, "Topology Zoo — Summary")
     header_row = 4
     sum_cols = [
-        "graph", "nodes", "edges", "edgedefault", "multigraph?",
+        "graph", "nodes", "real_nodes", "rj45_nodes", "switch_nodes",
+        "edges", "external_edges", "edgedefault", "multigraph?",
         "parallel_edges", "self_loops", "missing_lat_or_lon",
+        "real_missing_lat_or_lon", "real_missing_label",
+        "real_missing_country", "real_geonames_unreachable",
+        "geonames_eligible",
+        "real_nodes_resolved", "real_total_population",
         "bad_coords", "isolated_nodes", "components",
         "duplicate_labels", "whitespace_labels", "empty_labels",
         "control_char_labels", "dangling_endpoints", "issues",
@@ -480,7 +801,7 @@ def write_workbook(entries, all_missing, all_issues, global_summary):
     total_row = header_row + 1 + len(entries)
     ws.cell(total_row, 1, "TOTALS").font = HEADER_FONT
     for i, k in enumerate(sum_cols, start=1):
-        if k in ("graph", "edgedefault", "multigraph?"):
+        if k in ("graph", "edgedefault", "multigraph?", "geonames_eligible"):
             continue
         vals = [e.get(k, 0) for e in entries if isinstance(e.get(k), (int, float))]
         ws.cell(total_row, i, sum(vals))
@@ -517,6 +838,72 @@ def write_workbook(entries, all_missing, all_issues, global_summary):
             r += 1
     autosize(ws3)
 
+    # Real-node populations sheet -- one row per real internal node,
+    # showing the matched geonames record and population.
+    ws_pop = wb.create_sheet("Real-node Populations")
+    _stamp(ws_pop, "Topology Zoo — Real-node Populations")
+    pop_headers = ["graph", "node_id", "label", "src_lat", "src_lon",
+                   "matched_country", "matched_name", "population", "method"]
+    for i, h in enumerate(pop_headers, start=1):
+        ws_pop.cell(4, i, h)
+    style_header(ws_pop, row=4)
+    r = 5
+    for graph, rows in all_enrichment.items():
+        for row in rows:
+            for i, v in enumerate(row, start=1):
+                ws_pop.cell(r, i, v)
+            r += 1
+    autosize(ws_pop)
+
+    # Partial Resolution sheet -- a to-do list of graphs that resolved
+    # most of their real internal nodes but missed a handful.  Each
+    # graph block opens with a header row showing the completion stats
+    # and is followed by one row per unresolved node so a human can
+    # work through them.  Sorted by completion percentage descending so
+    # the easiest fixes come first.
+    ws_part = wb.create_sheet("Partial Resolution")
+    _stamp(ws_part, "Topology Zoo — Partially Resolved Graphs")
+    part_headers = ["graph", "node_id", "label", "src_lat", "src_lon",
+                    "method"]
+    for i, h in enumerate(part_headers, start=1):
+        ws_part.cell(4, i, h)
+    style_header(ws_part, row=4)
+
+    # Build a per-graph view from entries (so we have the stats handy).
+    by_graph = {e["graph"]: e for e in entries}
+    partials = []
+    for g, e in by_graph.items():
+        n = e.get("real_nodes", 0)
+        k = e.get("real_nodes_resolved", 0)
+        if isinstance(n, int) and isinstance(k, int) and 0 < k < n:
+            partials.append((g, n, k))
+    partials.sort(key=lambda t: (-t[2] / t[1], t[0]))
+
+    r = 5
+    for g, n, k in partials:
+        pct = k * 100.0 / n
+        hdr_cell = ws_part.cell(r, 1, f"{g}  —  {k}/{n} resolved ({pct:.1f}%)")
+        hdr_cell.font = HEADER_FONT
+        hdr_cell.fill = HEADER_FILL
+        for col in range(2, len(part_headers) + 1):
+            ws_part.cell(r, col).fill = HEADER_FILL
+        r += 1
+        for row in all_enrichment.get(g, []):
+            (_, nid, label, src_lat, src_lon,
+             matched_country, matched_name, _pop, method) = row
+            if matched_name:   # resolved -- skip
+                continue
+            ws_part.cell(r, 1, g)
+            ws_part.cell(r, 2, nid)
+            ws_part.cell(r, 3, label)
+            ws_part.cell(r, 4, src_lat)
+            ws_part.cell(r, 5, src_lon)
+            ws_part.cell(r, 6, method)
+            for c in ws_part[r]:
+                c.fill = ISSUE_FILL
+            r += 1
+    autosize(ws_part)
+
     # Multigraphs sheet
     ws4 = wb.create_sheet("Multigraphs")
     _stamp(ws4, "Topology Zoo — Multigraphs")
@@ -539,7 +926,7 @@ def write_workbook(entries, all_missing, all_issues, global_summary):
 
 # ---- markdown summary ------------------------------------------------
 
-def write_report(entries, all_issues, global_stats):
+def write_report(entries, all_issues, all_enrichment, global_stats):
     total_graphs  = len(entries)
     total_nodes   = sum(e["nodes"] for e in entries)
     total_edges   = sum(e["edges"] for e in entries)
@@ -591,6 +978,119 @@ def write_report(entries, all_issues, global_stats):
     A(f"- Nodes whose lat/lon value was *provided but invalid* "
       f"(empty string, 'None', 'NaN', out-of-range, non-numeric): **{total_bad}**.")
     A("")
+
+    # Real-vs-Rj45/switch breakdown.  Real nodes are CORE routers in
+    # the exported XML; Rj45 nodes represent peering links to other
+    # networks (per glang's default topology-zoo shape rules); switch
+    # nodes represent shared-medium fabrics.
+    total_real     = sum(e["real_nodes"]   for e in entries)
+    total_rj45     = sum(e["rj45_nodes"]   for e in entries)
+    total_switch   = sum(e["switch_nodes"] for e in entries)
+    total_external = sum(e["external_edges"] for e in entries)
+    total_real_unloc = sum(e["real_missing_lat_or_lon"] for e in entries)
+    real_unloc_graphs = sum(1 for e in entries if e["real_missing_lat_or_lon"] > 0)
+    geon_eligible_graphs = sum(1 for e in entries if e["geonames_eligible"] == "yes")
+
+    A("## Node classification (per glang's topology-zoo shape rules)\n")
+    A(f"- **{total_real:,}** real internal nodes (become CORE routers).")
+    A(f"- **{total_rj45:,}** Rj45 nodes (links to other networks; "
+      f"`Internal == 0`).")
+    A(f"- **{total_switch:,}** switch nodes (shared-medium fabrics; "
+      f"`hyperedge == 1`).")
+    A(f"- **{total_external:,}** edges connect to a network beyond the "
+      f"graph (at least one Rj45 endpoint).")
+    A("")
+
+    A("## Real-node lat/lon coverage\n")
+    A(f"- **{real_unloc_graphs}** of **{total_graphs}** graphs have at "
+      f"least one real internal node missing lat/lon "
+      f"(the Rj45/switch holes are excluded).")
+    A(f"- Total real internal nodes lacking lat/lon: **{total_real_unloc:,}** "
+      f"({total_real_unloc * 100.0 / max(total_real, 1):.1f}% of real nodes).")
+    A("")
+
+    A("## Geonames eligibility (upper bound for 100% population coverage)\n")
+    A("Geonames offers two lookup paths.  A real internal node is "
+      "*reachable* if at least one applies:\n")
+    A("- **Reverse** (lat/lon → nearest populated place).  No country "
+      "scope needed; coordinates disambiguate globally.")
+    A("- **Forward** (place name → matching geonames record).  Needs a "
+      "country scope, either the node's own `Country` attribute or a "
+      "graph-level single-country context "
+      "(`GeoExtent == \"Country\"` with a non-empty `GeoLocation`).\n")
+    A("A graph is *geonames-eligible* when **every** real internal node is "
+      "reachable by at least one path.  This is the upper bound on graphs "
+      "that could plausibly have population data added to every internal "
+      "node via the geonames API.\n")
+    total_unreachable = sum(e["real_geonames_unreachable"] for e in entries)
+    A(f"- **{geon_eligible_graphs}** of **{total_graphs}** graphs are "
+      f"geonames-eligible "
+      f"({geon_eligible_graphs * 100.0 / max(total_graphs, 1):.1f}%).")
+    A(f"- Across the whole archive, **{total_unreachable:,}** real internal "
+      f"nodes are unreachable by either path "
+      f"({total_unreachable * 100.0 / max(total_real, 1):.2f}% of real nodes).")
+    A("")
+
+    # Measured (vs upper bound): the audit ran live geonames lookups
+    # against the cities500 dataset for every real internal node.  A
+    # node is *resolved* when it matched a geonames record (reverse by
+    # lat/lon, or forward by name+country).  Forward matches can miss
+    # even when the node was structurally reachable -- the label may
+    # not appear in cities500 (small towns, abbreviations, alternate
+    # spellings).  This section reports what actually matched.
+    total_resolved   = sum(e["real_nodes_resolved"]   for e in entries)
+    total_population = sum(e["real_total_population"] for e in entries)
+    fully_resolved_graphs = sum(
+        1 for e in entries
+        if e["real_nodes"] > 0
+        and e["real_nodes_resolved"] == e["real_nodes"])
+    A("## Geonames coverage (measured against cities500)\n")
+    A("Live cities500 lookups were run for every real internal node.  "
+      "A node is *resolved* when geonames returned a record (reverse "
+      "from lat/lon, or forward from name+country).  Resolved nodes "
+      "carry a population figure on the `Real-node Populations` sheet.\n")
+    A(f"- **{total_resolved:,}** of **{total_real:,}** real internal "
+      f"nodes resolved "
+      f"({total_resolved * 100.0 / max(total_real, 1):.1f}%).")
+    A(f"- **{fully_resolved_graphs}** of **{total_graphs}** graphs have "
+      f"100% of their real internal nodes resolved "
+      f"({fully_resolved_graphs * 100.0 / max(total_graphs, 1):.1f}%).")
+    A(f"- Aggregate population across resolved nodes: "
+      f"**{total_population:,}**.")
+    A("")
+
+    # Partial-resolution to-do list: per-graph subsections listing the
+    # unresolved real internal nodes in each partially-resolved graph,
+    # so a human can work through them.  Sorted by completion %
+    # descending (easiest finishes first).  Mirrors the `Partial
+    # Resolution` workbook sheet.
+    partials = []
+    for e in entries:
+        n = e.get("real_nodes", 0)
+        k = e.get("real_nodes_resolved", 0)
+        if isinstance(n, int) and isinstance(k, int) and 0 < k < n:
+            partials.append((e["graph"], n, k))
+    partials.sort(key=lambda t: (-t[2] / t[1], t[0]))
+    if partials:
+        A("## Partial-resolution to-do list\n")
+        A(f"**{len(partials)}** graphs resolved most of their real "
+          f"internal nodes but missed at least one.  Each subsection "
+          f"below lists the unresolved labels alongside the lookup "
+          f"method that failed (`forward-miss` -- a name+country lookup "
+          f"that didn't match cities500; `unreachable` -- no lat/lon and "
+          f"no usable name+country).  Listed in completion-percentage "
+          f"order so the easiest graphs to finish appear first.\n")
+        for g, n, k in partials:
+            pct = k * 100.0 / n
+            A(f"### {g} -- {k}/{n} resolved ({pct:.1f}%)\n")
+            for row in all_enrichment.get(g, []):
+                (_, nid, label, _slat, _slon,
+                 _mc, matched_name, _pop, method) = row
+                if matched_name:
+                    continue
+                disp = label if label else "(empty label)"
+                A(f"- `{nid}` `{disp}` ({method})")
+            A("")
 
     A("## Graph structure\n")
     A(f"- Multigraphs (at least one pair of parallel edges): **{len(multigraphs)}**.")
@@ -800,9 +1300,14 @@ def main():
 
     print(f"Processing {len(files)} graphml files from {ZOO_DIR}")
 
-    entries = []       # summary row per graph
-    all_issues = {}    # graph -> list of issue dicts
-    all_missing = {}   # graph -> list of (nid, label, which)
+    print("Loading geonames cities500 index ...", flush=True)
+    geo = GeonamesIndex.load()
+    print(f"  {len(geo.records):,} populated places indexed", flush=True)
+
+    entries = []         # summary row per graph
+    all_issues = {}      # graph -> list of issue dicts
+    all_missing = {}     # graph -> list of (nid, label, which)
+    all_enrichment = {}  # graph -> list of enrichment rows (real nodes only)
     wb = Workbook()
     wb.remove(wb.active)
 
@@ -813,27 +1318,42 @@ def main():
             parsed = parse_graphml(path)
         except ET.ParseError as ex:
             print(f"  !! parse error in {path.name}: {ex}")
-            entries.append({"graph": path.stem, "nodes": 0, "edges": 0,
+            entries.append({"graph": path.stem, "nodes": 0,
+                            "real_nodes": 0, "rj45_nodes": 0,
+                            "switch_nodes": 0, "edges": 0,
+                            "external_edges": 0,
                             "edgedefault": "?", "multigraph?": "?",
                             "parallel_edges": 0, "self_loops": 0,
-                            "missing_lat_or_lon": 0, "bad_coords": 0,
+                            "missing_lat_or_lon": 0,
+                            "real_missing_lat_or_lon": 0,
+                            "real_missing_label": 0,
+                            "real_missing_country": 0,
+                            "real_geonames_unreachable": 0,
+                            "geonames_eligible": "no",
+                            "real_nodes_resolved": 0,
+                            "real_total_population": 0,
+                            "bad_coords": 0,
                             "isolated_nodes": 0, "components": 0,
                             "duplicate_labels": 0, "whitespace_labels": 0,
                             "empty_labels": 0, "control_char_labels": 0,
                             "dangling_endpoints": 0, "issues": 1})
             continue
-        summary, issues, missing = analyse(parsed)
+        summary, issues, missing, enrichment = analyse(parsed, geo=geo)
         entries.append(summary)
-        all_issues[path.stem]  = issues
-        all_missing[path.stem] = missing
+        all_issues[path.stem]     = issues
+        all_missing[path.stem]    = missing
+        all_enrichment[path.stem] = enrichment
         write_per_graph_sheet(wb, parsed)
 
     # Insert rollup sheets at position 0..3
     # (write_workbook builds those; we carry wb separately to keep the
     # per-graph sheets we already created.)
-    roll = write_workbook(entries, all_missing, all_issues, None)
+    roll = write_workbook(entries, all_missing, all_issues, all_enrichment,
+                          None)
     # Insert roll sheets at the front of wb (in reverse so order is right)
-    for title in ("Multigraphs", "Issues", "Missing Locations", "Summary"):
+    for title in ("Multigraphs", "Partial Resolution",
+                  "Real-node Populations", "Issues",
+                  "Missing Locations", "Summary"):
         if title in roll.sheetnames:
             src = roll[title]
             dst = wb.create_sheet(title=title, index=0)
@@ -848,7 +1368,7 @@ def main():
     wb.save(XLSX)
     print(f"  wrote {XLSX}")
 
-    md = write_report(entries, all_issues, None)
+    md = write_report(entries, all_issues, all_enrichment, None)
     REPORT.write_text(md)
     print(f"  wrote {REPORT}")
 
