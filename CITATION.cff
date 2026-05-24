@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this dataset or software, please cite the associated article."
+title: "InternetTopologyZoo"
+abstract: "A repository of Internet and telecommunications network topologies derived from publicly available operator maps and metadata."
+type: software
+
+authors:
+  - family-names: "Roughan"
+    given-names: "Matthew"
+
+repository-code: "https://github.com/mroughan/InternetTopologyZoo"
+url: "https://github.com/mroughan/InternetTopologyZoo"
+
+keywords:
+  - internet topology
+  - network topology
+  - graph data
+  - telecommunications
+  - graphml
+  - networking
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Knight"
+      given-names: "Simon"
+    - family-names: "Nguyen"
+      given-names: "Hung X."
+    - family-names: "Falkner"
+      given-names: "Nickolas"
+    - family-names: "Bowden"
+      given-names: "Rhys"
+    - family-names: "Roughan"
+      given-names: "Matthew"
+  title: "The Internet Topology Zoo"
+  journal: "IEEE Journal on Selected Areas in Communications"
+  year: 2011
+  volume: 29
+  issue: 9
+  start: 1765
+  end: 1775
+  doi: "10.1109/JSAC.2011.111002"
+  url: "https://ieeexplore.ieee.org/document/6027859"
